@@ -108,6 +108,13 @@ Follow these steps to quickly set up and run the ChatGPT Retrieval Plugin:
    export QDRANT_GRPC_PORT=<your_qdrant_grpc_port>
    export QDRANT_API_KEY=<your_qdrant_api_key>
    export QDRANT_COLLECTION=<your_qdrant_collection>
+      
+   # AnalyticDB
+   export PGHOST=<your_analyticdb_host>
+   export PGPORT=<your_analyticdb_port>
+   export PGUSER=<your_analyticdb_username>
+   export PGPASSWORD=<your_analyticdb_password>
+   export PGDATABASE=<your_analyticdb_database>
 
    # Redis
    export REDIS_HOST=<your_redis_host>
@@ -257,7 +264,6 @@ For more detailed instructions on setting up and using each vector database prov
 
 [Redis](https://redis.com/solutions/use-cases/vector-database/) is a real-time data platform suitable for a variety of use cases, including everyday applications and AI/ML workloads. It can be used as a low-latency vector engine by creating a Redis database with the [Redis Stack docker container](/examples/docker/redis/docker-compose.yml). For a hosted/managed solution, [Redis Cloud](https://app.redislabs.com/#/) is available. For detailed setup instructions, refer to [`/docs/providers/redis/setup.md`](/docs/providers/redis/setup.md).
 
-
 #### LlamaIndex
 
 [LlamaIndex](https://github.com/jerryjliu/llama_index) is a central interface to connect your LLM's with external data.
@@ -267,6 +273,13 @@ It is light-weight, easy-to-use, and requires no additional deployment.
 All you need to do is specifying a few environment variables (optionally point to an existing saved Index json file).
 Note that metadata filters in queries are not yet supported.
 For detailed setup instructions, refer to [`/docs/providers/llama/setup.md`](/docs/providers/llama/setup.md).
+
+#### AnalyticDB
+[AnalyticDB](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/product-introduction-overview) is a distributed cloud-native vector database designed for storing documents and vector embeddings. 
+As a high-performance vector database, it is fully compatible with PostgreSQL syntax, making it easy to use. Managed by Alibaba Cloud, AnalyticDB is a cloud-native database with a powerful vector compute engine. 
+Its out-of-the-box experience enables processing of billions of data vectors and offers a wide range of features, including indexing algorithms, structured and unstructured data capabilities, real-time updates, distance metrics, scalar filtering, and time travel searches. 
+Additionally, it provides full OLAP database functionality and an SLA commitment for production use.
+For detailed setup instructions, refer to [`/docs/providers/analyticdb/setup.md`](/docs/providers/analyticdb/setup.md).
 
 ### Running the API locally
 
