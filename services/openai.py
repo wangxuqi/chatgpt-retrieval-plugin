@@ -1,5 +1,7 @@
 from typing import List
 import openai
+import subprocess
+import json
 
 
 from tenacity import retry, wait_random_exponential, stop_after_attempt
@@ -27,6 +29,23 @@ def get_embeddings(texts: List[str]) -> List[List[float]]:
 
     # Return the embeddings as a list of lists of floats
     return [result["embedding"] for result in data]
+
+
+def get_embeddings_v3(texts: List[str]) -> List[List[float]]:
+    data = json.dumps({"sentences": texts})
+    headers = {'Content-Type': 'application/json'}
+    url = 'http://127.0.0.1:8500/encode/'
+
+    curl_command = ['curl', '--location', url, '--header', f'Content-Type: {headers["Content-Type"]}', '--data', data]
+    process = subprocess.run(curl_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+    if process.returncode == 0:
+        response_json = json.loads(process.stdout)
+        return response_json['embeddings']
+    else:
+        print("Failed to get embedding")
+        print(process.stderr)
+        return []
 
 
 @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
