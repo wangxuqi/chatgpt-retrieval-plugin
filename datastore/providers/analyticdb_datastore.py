@@ -24,7 +24,7 @@ PG_CONFIG = {
     "host": os.environ.get("PG_HOST", "localhost"),
     "port": int(os.environ.get("PG_PORT", "5432")),
 }
-OUTPUT_DIM = 1536
+OUTPUT_DIM = 768
 
 
 class AnalyticDBDataStore(DataStore):
@@ -87,7 +87,7 @@ class AnalyticDBDataStore(DataStore):
                 USING ann(embedding)
                 WITH (
                     distancemeasure=L2,
-                    dim=1536,
+                    dim=768,
                     pq_segments=64,
                     hnsw_m=100,
                     pq_centers=2048
