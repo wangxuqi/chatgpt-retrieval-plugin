@@ -2,8 +2,8 @@ import os
 import asyncio
 from typing import Dict, List, Optional, Tuple, Any
 from datetime import datetime
-import psycopg2cffi as psycopg2
-from psycopg2cffi.extras import DictCursor
+import psycopg2
+from psycopg2.extras import DictCursor
 
 from services.date import to_unix_timestamp
 from datastore.datastore import DataStore
